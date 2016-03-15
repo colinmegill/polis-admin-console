@@ -4,6 +4,7 @@ import { handleSeedCommentSubmit, seedCommentChanged } from "../../actions";
 import Radium from "radium";
 import _ from "lodash";
 import Button from "../framework/generic-button";
+import strings from "../../strings/strings";
 
 const styles = {
   card: {
@@ -60,7 +61,7 @@ class ModerateCommentsSeed extends React.Component {
     }
 
     if (this.props.error) {
-      text = "Error submitting, click to try again";
+      text = "Error submitting, please try again";
     }
 
     if (this.props.loading) {
@@ -92,6 +93,7 @@ class ModerateCommentsSeed extends React.Component {
             onClick={this.handleSubmitSeed.bind(this)}>
             {this.getButtonText()}
           </Button>
+          {this.props.error ? <p>{strings(this.props.error)}</p> : ""}
         </div>
       </div>
     );
